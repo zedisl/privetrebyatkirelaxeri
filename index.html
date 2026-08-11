@@ -1,0 +1,2003 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SCP-███ // ZERO ROOM</title>
+
+<style>
+
+/* =========================================================
+   SCP DATABASE // CORE
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg: #080909;
+    --panel: #0d0f0f;
+    --panel2: #111414;
+
+    --text: #d7dbd8;
+    --muted: #727a75;
+
+    --green: #9fb8a6;
+    --green2: #c7d9cc;
+
+    --red: #d84b4b;
+    --red2: #ff6464;
+
+    --yellow: #c8ae63;
+
+    --border: #252a27;
+    --border-light: #343b36;
+
+    --mono: "IBM Plex Mono", monospace;
+    --sans: "Inter", sans-serif;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(150,180,160,.07),
+            transparent 35%
+        ),
+        var(--bg);
+
+    color: var(--text);
+
+    font-family: var(--sans);
+
+    min-height: 100vh;
+}
+
+
+/* subtle CRT */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,.012) 0px,
+            rgba(255,255,255,.012) 1px,
+            transparent 2px,
+            transparent 4px
+        );
+
+    opacity: .35;
+
+    z-index: 999;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 28px;
+
+    background: rgba(8,9,9,.9);
+
+    border-bottom: 1px solid var(--border);
+
+    backdrop-filter: blur(14px);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+}
+
+.foundation-logo {
+    width: 34px;
+    height: 34px;
+
+    border: 1px solid #707a73;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #aebbb1;
+
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.header-title {
+    font-family: var(--mono);
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #9da69f;
+}
+
+.header-right {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+}
+
+.classification {
+    padding: 6px 10px;
+
+    border: 1px solid #493f26;
+
+    color: var(--yellow);
+
+    font-family: var(--mono);
+    font-size: 9px;
+
+    letter-spacing: 1px;
+}
+
+.system-status {
+    color: #698072;
+
+    font-family: var(--mono);
+    font-size: 9px;
+}
+
+.system-status::before {
+    content: "●";
+
+    color: #789c82;
+
+    margin-right: 6px;
+}
+
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.container {
+    width: min(1180px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding: 60px 0 100px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    padding-bottom: 45px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.eyebrow {
+    color: #68716c;
+
+    font-family: var(--mono);
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 20px;
+}
+
+.eyebrow span {
+    color: var(--red);
+}
+
+h1 {
+    margin: 0;
+
+    font-size: clamp(38px, 7vw, 76px);
+
+    line-height: .95;
+
+    font-weight: 800;
+
+    letter-spacing: -4px;
+
+    color: #e1e5e2;
+}
+
+.object-name {
+    margin-top: 15px;
+
+    color: #818b84;
+
+    font-family: var(--mono);
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+}
+
+.hero-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 320px;
+
+    gap: 55px;
+
+    margin-top: 40px;
+}
+
+.description {
+    color: #aeb5b0;
+
+    line-height: 1.8;
+
+    font-size: 14px;
+
+    max-width: 700px;
+}
+
+.warning-box {
+    border: 1px solid #4c2929;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(130,30,30,.08),
+            transparent
+        );
+
+    padding: 18px;
+}
+
+.warning-title {
+    color: var(--red2);
+
+    font-family: var(--mono);
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 12px;
+}
+
+.warning-text {
+    color: #aa8585;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   META
+========================================================= */
+
+.meta {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    margin-top: 45px;
+
+    border: 1px solid var(--border);
+}
+
+.meta-item {
+    padding: 18px;
+
+    border-right: 1px solid var(--border);
+}
+
+.meta-item:last-child {
+    border-right: none;
+}
+
+.meta-label {
+    color: #59625d;
+
+    font-family: var(--mono);
+
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+}
+
+.meta-value {
+    margin-top: 8px;
+
+    color: #c1c8c3;
+
+    font-family: var(--mono);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.content-grid {
+    display: grid;
+
+    grid-template-columns: 230px 1fr;
+
+    gap: 50px;
+
+    margin-top: 55px;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+    position: sticky;
+
+    top: 90px;
+
+    align-self: start;
+}
+
+.sidebar-title {
+    color: #59625d;
+
+    font-family: var(--mono);
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 15px;
+}
+
+.nav-button {
+    display: block;
+
+    width: 100%;
+
+    padding: 11px 12px;
+
+    margin-bottom: 4px;
+
+    background: transparent;
+
+    border: 1px solid transparent;
+
+    color: #727a75;
+
+    text-align: left;
+
+    font-family: var(--mono);
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.nav-button:hover,
+.nav-button.active {
+    color: #c5cec8;
+
+    background: #111514;
+
+    border-color: var(--border);
+}
+
+.access-box {
+    margin-top: 30px;
+
+    padding: 15px;
+
+    border: 1px solid var(--border);
+
+    background: #0b0d0d;
+}
+
+.access-label {
+    color: #505853;
+
+    font-family: var(--mono);
+
+    font-size: 8px;
+
+    margin-bottom: 8px;
+}
+
+.access-level {
+    color: var(--green);
+
+    font-family: var(--mono);
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   ARTICLE
+========================================================= */
+
+article section {
+    margin-bottom: 65px;
+}
+
+.section-number {
+    color: #4e5651;
+
+    font-family: var(--mono);
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 9px;
+}
+
+h2 {
+    margin: 0 0 22px;
+
+    color: #dce1de;
+
+    font-size: 25px;
+
+    letter-spacing: -1px;
+}
+
+p {
+    color: #aeb5b0;
+
+    line-height: 1.85;
+
+    font-size: 14px;
+}
+
+strong {
+    color: #d5dbd7;
+}
+
+
+/* =========================================================
+   CONTAINMENT
+========================================================= */
+
+.containment {
+    padding: 22px;
+
+    border-left: 2px solid #687e6e;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(100,140,110,.055),
+            transparent
+        );
+}
+
+.containment p {
+    margin: 0;
+}
+
+
+/* =========================================================
+   INTERACTIVE CAMERA
+========================================================= */
+
+.camera {
+    border: 1px solid var(--border);
+
+    background: #050606;
+
+    overflow: hidden;
+}
+
+.camera-top {
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 13px;
+
+    border-bottom: 1px solid var(--border);
+
+    font-family: var(--mono);
+
+    font-size: 9px;
+
+    color: #68716b;
+}
+
+.camera-status {
+    margin-left: auto;
+
+    color: #7f9a87;
+}
+
+.camera-screen {
+    position: relative;
+
+    height: 330px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #151917,
+            #050606 65%
+        );
+}
+
+
+/* room */
+
+.room {
+    position: relative;
+
+    width: 70%;
+    height: 70%;
+
+    border: 1px solid #29302b;
+
+    background:
+        linear-gradient(
+            135deg,
+            #121614,
+            #080a09
+        );
+
+    box-shadow:
+        inset 0 0 60px rgba(0,0,0,.8);
+}
+
+
+/* object */
+
+.object {
+    position: absolute;
+
+    width: 45px;
+    height: 45px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px solid #829087;
+
+    background: #111513;
+
+    box-shadow:
+        0 0 35px rgba(180,210,190,.05);
+
+    transition:
+        transform .7s,
+        width .7s,
+        height .7s,
+        opacity .7s;
+}
+
+.object::after {
+    content: "?";
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #68766d;
+
+    font-family: var(--mono);
+
+    font-size: 18px;
+}
+
+
+/* camera noise */
+
+.noise {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: .08;
+
+    background-image:
+        radial-gradient(
+            rgba(255,255,255,.7) 1px,
+            transparent 1px
+        );
+
+    background-size: 3px 3px;
+
+    animation: noise .15s infinite;
+}
+
+@keyframes noise {
+    0% {
+        transform: translate(0,0);
+    }
+
+    25% {
+        transform: translate(2px,-1px);
+    }
+
+    50% {
+        transform: translate(-1px,2px);
+    }
+
+    75% {
+        transform: translate(1px,1px);
+    }
+
+    100% {
+        transform: translate(0,0);
+    }
+}
+
+
+/* scan */
+
+.scan {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    height: 1px;
+
+    background: rgba(170,220,185,.18);
+
+    box-shadow:
+        0 0 10px rgba(170,220,185,.15);
+
+    animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+    from {
+        top: 0;
+    }
+
+    to {
+        top: 100%;
+    }
+}
+
+
+/* camera controls */
+
+.camera-controls {
+    display: flex;
+
+    gap: 8px;
+
+    padding: 12px;
+
+    border-top: 1px solid var(--border);
+}
+
+.cam-button {
+    flex: 1;
+
+    padding: 10px;
+
+    border: 1px solid var(--border);
+
+    background: #0d1010;
+
+    color: #758079;
+
+    font-family: var(--mono);
+
+    font-size: 9px;
+
+    cursor: pointer;
+}
+
+.cam-button:hover {
+    color: #c2cec5;
+
+    border-color: var(--border-light);
+}
+
+
+/* =========================================================
+   REDACTED
+========================================================= */
+
+.redacted {
+    display: inline-block;
+
+    padding: 1px 5px;
+
+    background: #171918;
+
+    color: transparent;
+
+    border-radius: 2px;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    transition: .3s;
+}
+
+.redacted:hover {
+    color: #b9c5bd;
+
+    background: #292e2b;
+}
+
+
+/* =========================================================
+   TERMINAL
+========================================================= */
+
+.terminal-box {
+    border: 1px solid var(--border);
+
+    background: #050707;
+
+    font-family: var(--mono);
+
+    overflow: hidden;
+}
+
+.terminal-header {
+    padding: 11px 14px;
+
+    border-bottom: 1px solid var(--border);
+
+    color: #68716b;
+
+    font-size: 9px;
+}
+
+.terminal-body {
+    padding: 20px;
+
+    min-height: 190px;
+
+    color: #84938a;
+
+    font-size: 10px;
+
+    line-height: 1.9;
+}
+
+.command {
+    color: #a8b9ad;
+}
+
+.command::before {
+    content: "root@site:~$ ";
+
+    color: #587160;
+}
+
+.cursor {
+    display: inline-block;
+
+    width: 6px;
+    height: 12px;
+
+    background: #91aa98;
+
+    vertical-align: middle;
+
+    animation: blink .8s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   LOG
+========================================================= */
+
+.log {
+    border: 1px solid var(--border);
+}
+
+.log-row {
+    display: grid;
+
+    grid-template-columns: 100px 90px 1fr;
+
+    padding: 14px;
+
+    border-bottom: 1px solid var(--border);
+
+    font-family: var(--mono);
+
+    font-size: 9px;
+}
+
+.log-row:last-child {
+    border-bottom: none;
+}
+
+.log-time {
+    color: #505853;
+}
+
+.log-type {
+    color: #798a7e;
+}
+
+.log-text {
+    color: #9ca69f;
+}
+
+
+/* =========================================================
+   ALERT
+========================================================= */
+
+.alert {
+    padding: 18px;
+
+    border: 1px solid #493c20;
+
+    background: rgba(130,100,30,.045);
+
+    color: #ad9a68;
+
+    font-family: var(--mono);
+
+    font-size: 10px;
+
+    line-height: 1.7;
+}
+
+.alert strong {
+    color: #d2b96d;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    border-top: 1px solid var(--border);
+
+    padding: 35px 0;
+
+    color: #4f5852;
+
+    font-family: var(--mono);
+
+    font-size: 9px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   EMERGENCY MODE
+========================================================= */
+
+body.emergency {
+    --red: #ff3030;
+    --red2: #ff4c4c;
+}
+
+body.emergency .camera-screen {
+    animation: emergencyFlash .5s infinite alternate;
+}
+
+@keyframes emergencyFlash {
+    from {
+        filter: none;
+    }
+
+    to {
+        filter:
+            sepia(.4)
+            saturate(1.8);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    header {
+        padding: 0 15px;
+    }
+
+    .system-status {
+        display: none;
+    }
+
+    .container {
+        width: calc(100% - 28px);
+
+        padding-top: 40px;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+    }
+
+    .meta {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .meta-item:nth-child(2) {
+        border-right: none;
+    }
+
+    .meta-item:nth-child(-n+2) {
+        border-bottom: 1px solid var(--border);
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    .nav {
+        display: flex;
+
+        overflow-x: auto;
+
+        gap: 5px;
+    }
+
+    .nav-button {
+        white-space: nowrap;
+
+        width: auto;
+    }
+
+    .access-box {
+        display: none;
+    }
+
+    .camera-screen {
+        height: 270px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    h1 {
+        letter-spacing: -2px;
+    }
+
+    .meta {
+        grid-template-columns: 1fr;
+    }
+
+    .meta-item {
+        border-right: none;
+
+        border-bottom: 1px solid var(--border);
+    }
+
+    .meta-item:last-child {
+        border-bottom: none;
+    }
+
+    .log-row {
+        grid-template-columns: 70px 70px 1fr;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+    <div class="header-left">
+
+        <div class="foundation-logo">
+            SCP
+        </div>
+
+        <div class="header-title">
+            FOUNDATION // DATABASE
+        </div>
+
+    </div>
+
+
+    <div class="header-right">
+
+        <div class="classification">
+            LEVEL 4
+        </div>
+
+        <div class="system-status">
+            SYSTEM ONLINE
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     PAGE
+===================================================== -->
+
+<div class="container">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="eyebrow">
+            DATABASE ENTRY / <span>CLASSIFIED</span>
+        </div>
+
+
+        <h1>
+            SCP-███
+        </h1>
+
+
+        <div class="object-name">
+            "ZERO ROOM"
+        </div>
+
+
+        <div class="hero-grid">
+
+            <div class="description">
+
+                SCP-███ — обозначение аномального помещения,
+                обнаруженного в недействующем исследовательском
+                комплексе.
+
+                <br><br>
+
+                Объект представляет собой комнату размером
+                приблизительно 6 × 6 × 3 метра. Внутреннее
+                пространство визуально не отличается от обычного
+                бетонного помещения.
+
+                <br><br>
+
+                Однако любые попытки получить изображение,
+                точные измерения или длительную запись поведения
+                SCP-███ приводят к <strong>несогласованным
+                результатам</strong>.
+
+            </div>
+
+
+            <div class="warning-box">
+
+                <div class="warning-title">
+                    ⚠ CONTAINMENT NOTICE
+                </div>
+
+                <div class="warning-text">
+
+                    Персоналу запрещено находиться
+                    внутри объекта более 90 секунд.
+
+                    <br><br>
+
+                    При обнаружении изменений
+                    конфигурации помещения немедленно
+                    покинуть сектор.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- META -->
+
+        <div class="meta">
+
+            <div class="meta-item">
+
+                <div class="meta-label">
+                    OBJECT CLASS
+                </div>
+
+                <div class="meta-value">
+                    EUCLID
+                </div>
+
+            </div>
+
+
+            <div class="meta-item">
+
+                <div class="meta-label">
+                    STATUS
+                </div>
+
+                <div class="meta-value">
+                    CONTAINED
+                </div>
+
+            </div>
+
+
+            <div class="meta-item">
+
+                <div class="meta-label">
+                    THREAT LEVEL
+                </div>
+
+                <div class="meta-value">
+                    MODERATE
+                </div>
+
+            </div>
+
+
+            <div class="meta-item">
+
+                <div class="meta-label">
+                    CLEARANCE
+                </div>
+
+                <div class="meta-value">
+                    LEVEL 4+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- CONTENT -->
+
+    <div class="content-grid">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-title">
+                DOCUMENT INDEX
+            </div>
+
+
+            <nav class="nav">
+
+                <button
+                    class="nav-button active"
+                    onclick="scrollToSection('containment')"
+                >
+                    01 / CONTAINMENT
+                </button>
+
+
+                <button
+                    class="nav-button"
+                    onclick="scrollToSection('description')"
+                >
+                    02 / DESCRIPTION
+                </button>
+
+
+                <button
+                    class="nav-button"
+                    onclick="scrollToSection('camera')"
+                >
+                    03 / CAMERA FEED
+                </button>
+
+
+                <button
+                    class="nav-button"
+                    onclick="scrollToSection('incident')"
+                >
+                    04 / INCIDENT
+                </button>
+
+
+                <button
+                    class="nav-button"
+                    onclick="scrollToSection('terminal')"
+                >
+                    05 / TERMINAL
+                </button>
+
+            </nav>
+
+
+            <div class="access-box">
+
+                <div class="access-label">
+                    CURRENT CLEARANCE
+                </div>
+
+                <div class="access-level">
+                    LEVEL 4 / AUTHORIZED
+                </div>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- ARTICLE -->
+
+        <article>
+
+
+            <!-- CONTAINMENT -->
+
+            <section id="containment">
+
+                <div class="section-number">
+                    SECTION 01
+                </div>
+
+                <h2>
+                    Special Containment Procedures
+                </h2>
+
+
+                <div class="containment">
+
+                    <p>
+
+                        SCP-███ содержится в секторе ██
+                        Исследовательского комплекса-██.
+
+                        <br><br>
+
+                        Доступ разрешён исключительно сотрудникам
+                        с уровнем допуска 4/███ или выше.
+
+                        <br><br>
+
+                        Вокруг помещения установлены три независимые
+                        системы наблюдения. Все видеопотоки должны
+                        записываться одновременно.
+
+                        <br><br>
+
+                        <strong>
+                            В случае рассинхронизации камер
+                            персонал обязан покинуть помещение.
+                        </strong>
+
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- DESCRIPTION -->
+
+            <section id="description">
+
+                <div class="section-number">
+                    SECTION 02
+                </div>
+
+                <h2>
+                    Description
+                </h2>
+
+
+                <p>
+
+                    SCP-███ выглядит как пустая бетонная комната.
+                    В центре помещения находится неизвестный объект,
+                    обозначаемый как SCP-███-1.
+
+                </p>
+
+
+                <p>
+
+                    SCP-███-1 невозможно описать с достаточной
+                    точностью.
+
+                    Каждый сотрудник, наблюдающий его лично,
+                    предоставляет различное описание.
+
+                    <br><br>
+
+                    Один из исследователей назвал его
+                    <span class="redacted">
+                        "дверью без стены"
+                    </span>.
+
+                    Другой утверждал, что объект имеет форму
+                    <span class="redacted">
+                        человеческого силуэта
+                    </span>.
+
+                    Третий сотрудник заявил, что
+                    <span class="redacted">
+                        никакого объекта никогда не существовало.
+                    </span>
+
+                </p>
+
+
+                <div class="alert">
+
+                    <strong>
+                        DOCUMENT WARNING
+                    </strong>
+
+                    <br><br>
+
+                    Некоторые части описания были удалены
+                    после инцидента ███-04.
+
+                    Наведение курсора на засекреченные
+                    фрагменты раскрывает их содержимое.
+
+                </div>
+
+            </section>
+
+
+
+            <!-- CAMERA -->
+
+            <section id="camera">
+
+                <div class="section-number">
+                    SECTION 03
+                </div>
+
+                <h2>
+                    Live Surveillance Feed
+                </h2>
+
+
+                <div class="camera">
+
+                    <div class="camera-top">
+
+                        CAM-03
+                        //
+                        SECTOR ███
+
+                        <span class="camera-status">
+                            ● RECORDING
+                        </span>
+
+                    </div>
+
+
+                    <div class="camera-screen">
+
+                        <div class="room">
+
+                            <div
+                                class="object"
+                                id="scpObject"
+                            ></div>
+
+                        </div>
+
+
+                        <div class="noise"></div>
+
+                        <div class="scan"></div>
+
+                    </div>
+
+
+                    <div class="camera-controls">
+
+                        <button
+                            class="cam-button"
+                            onclick="cameraNormal()"
+                        >
+                            NORMAL
+                        </button>
+
+                        <button
+                            class="cam-button"
+                            onclick="cameraGlitch()"
+                        >
+                            ANALYZE
+                        </button>
+
+                        <button
+                            class="cam-button"
+                            onclick="cameraBreach()"
+                        >
+                            ⚠ INCIDENT
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- INCIDENT -->
+
+            <section id="incident">
+
+                <div class="section-number">
+                    SECTION 04
+                </div>
+
+                <h2>
+                    Incident Log
+                </h2>
+
+
+                <div class="log">
+
+                    <div class="log-row">
+
+                        <div class="log-time">
+                            03:14:02
+                        </div>
+
+                        <div class="log-type">
+                            SYSTEM
+                        </div>
+
+                        <div class="log-text">
+                            Camera 03 connected.
+                        </div>
+
+                    </div>
+
+
+                    <div class="log-row">
+
+                        <div class="log-time">
+                            03:14:17
+                        </div>
+
+                        <div class="log-type">
+                            WARNING
+                        </div>
+
+                        <div class="log-text">
+                            Spatial measurement mismatch.
+                        </div>
+
+                    </div>
+
+
+                    <div class="log-row">
+
+                        <div class="log-time">
+                            03:14:19
+                        </div>
+
+                        <div class="log-type">
+                            UNKNOWN
+                        </div>
+
+                        <div class="log-text">
+                            Additional object detected.
+                        </div>
+
+                    </div>
+
+
+                    <div class="log-row">
+
+                        <div class="log-time">
+                            03:14:20
+                        </div>
+
+                        <div class="log-type">
+                            ERROR
+                        </div>
+
+                        <div class="log-text">
+                            Camera 03 returned impossible frame.
+                        </div>
+
+                    </div>
+
+
+                    <div class="log-row">
+
+                        <div class="log-time">
+                            03:14:21
+                        </div>
+
+                        <div class="log-type">
+                            █████
+                        </div>
+
+                        <div class="log-text">
+                            <span class="redacted">
+                                THERE IS SOMEONE IN THE ROOM.
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- TERMINAL -->
+
+            <section id="terminal">
+
+                <div class="section-number">
+                    SECTION 05
+                </div>
+
+                <h2>
+                    Internal Terminal
+                </h2>
+
+
+                <div class="terminal-box">
+
+                    <div class="terminal-header">
+                        FOUNDATION TERMINAL // NODE-██
+                    </div>
+
+
+                    <div
+                        class="terminal-body"
+                        id="terminalOutput"
+                    >
+
+                        <div>
+                            SCP FOUNDATION INTERNAL NETWORK
+                        </div>
+
+                        <div>
+                            CONNECTION ESTABLISHED.
+                        </div>
+
+                        <br>
+
+                        <div class="command">
+                            status
+                        </div>
+
+                        <div>
+                            > containment: STABLE
+                        </div>
+
+                        <div>
+                            > surveillance: ACTIVE
+                        </div>
+
+                        <div>
+                            > anomaly: PRESENT
+                        </div>
+
+                        <br>
+
+                        <div class="command">
+                            type "help" for available commands
+                        </div>
+
+                        <br>
+
+                        <div>
+                            <span class="command">
+                                _
+                            </span>
+                            <span class="cursor"></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </article>
+
+    </div>
+
+</div>
+
+
+
+<footer>
+
+    SCP FOUNDATION DATABASE //
+    DOCUMENT SCP-███ //
+    UNAUTHORIZED DUPLICATION PROHIBITED
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function scrollToSection(id) {
+
+    const element =
+        document.getElementById(id);
+
+    if (!element) return;
+
+    element.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+
+    document
+        .querySelectorAll(".nav-button")
+        .forEach(button => {
+
+            button.classList.remove("active");
+
+        });
+}
+
+
+/* =========================================================
+   CAMERA
+========================================================= */
+
+const object =
+    document.getElementById("scpObject");
+
+
+function cameraNormal() {
+
+    document.body.classList.remove("emergency");
+
+    object.style.width = "45px";
+    object.style.height = "45px";
+    object.style.opacity = "1";
+    object.style.transform =
+        "translate(-50%, -50%)";
+
+}
+
+
+function cameraGlitch() {
+
+    document.body.classList.remove("emergency");
+
+    let counter = 0;
+
+    const interval =
+        setInterval(() => {
+
+            const x =
+                Math.random() * 20 - 10;
+
+            const y =
+                Math.random() * 20 - 10;
+
+            const scale =
+                0.7 + Math.random() * 1.8;
+
+            object.style.transform =
+                `translate(
+                    calc(-50% + ${x}px),
+                    calc(-50% + ${y}px)
+                )
+                scale(${scale})`;
+
+            object.style.opacity =
+                0.4 + Math.random() * .6;
+
+            counter++;
+
+            if (counter > 12) {
+
+                clearInterval(interval);
+
+                object.style.transform =
+                    "translate(-50%, -50%)";
+
+                object.style.opacity = "1";
+
+            }
+
+        }, 100);
+}
+
+
+function cameraBreach() {
+
+    document.body.classList.add("emergency");
+
+    object.style.width = "90px";
+    object.style.height = "150px";
+
+    object.style.transform =
+        "translate(-50%, -50%)";
+
+    object.style.opacity = ".9";
+
+
+    setTimeout(() => {
+
+        alert(
+            "CONTAINMENT ALERT\n\n" +
+            "CAMERA 03 REPORTS AN UNKNOWN " +
+            "ENTITY INSIDE THE CHAMBER.\n\n" +
+            "ALL PERSONNEL EVACUATE SECTOR ███."
+        );
+
+    }, 500);
+
+}
+
+
+/* =========================================================
+   TERMINAL
+========================================================= */
+
+const terminalOutput =
+    document.getElementById("terminalOutput");
+
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key !== "Enter") {
+            return;
+        }
+
+
+        const active =
+            document.activeElement;
+
+
+        if (
+            active &&
+            active.tagName === "INPUT"
+        ) {
+            return;
+        }
+
+
+        const command =
+            prompt(
+                "FOUNDATION TERMINAL\n\n" +
+                "Введите команду:\n" +
+                "help / status / camera / breach / clear"
+            );
+
+
+        if (!command) return;
+
+
+        executeCommand(
+            command.trim().toLowerCase()
+        );
+
+    }
+);
+
+
+function executeCommand(command) {
+
+    let response = "";
+
+
+    switch(command) {
+
+        case "help":
+
+            response =
+                "AVAILABLE COMMANDS:<br>" +
+                "status — system status<br>" +
+                "camera — open camera feed<br>" +
+                "breach — emergency simulation<br>" +
+                "clear — clear terminal";
+
+            break;
+
+
+        case "status":
+
+            response =
+                "CONTAINMENT: STABLE<br>" +
+                "CAMERAS: ONLINE<br>" +
+                "ANOMALY: PRESENT<br>" +
+                "PERSONNEL: 17<br>" +
+                "THREAT LEVEL: MODERATE";
+
+            break;
+
+
+        case "camera":
+
+            document
+                .getElementById("camera")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            response =
+                "REDIRECTING TO CAMERA 03...";
+
+            break;
+
+
+        case "breach":
+
+            cameraBreach();
+
+            response =
+                "!!! CONTAINMENT BREACH SIMULATION !!!";
+
+            break;
+
+
+        case "clear":
+
+            terminalOutput.innerHTML = "";
+
+            return;
+
+
+        default:
+
+            response =
+                "UNKNOWN COMMAND: " +
+                command;
+
+    }
+
+
+    const line =
+        document.createElement("div");
+
+    line.style.marginTop = "10px";
+
+    line.innerHTML =
+        "<span style='color:#587160'>" +
+        "root@site:~$ " +
+        "</span>" +
+        command +
+        "<br><span style='color:#9ca69f'>" +
+        response +
+        "</span>";
+
+
+    terminalOutput.appendChild(line);
+
+    terminalOutput.scrollTop =
+        terminalOutput.scrollHeight;
+}
+
+
+/* =========================================================
+   RANDOM DATABASE NOISE
+========================================================= */
+
+setInterval(() => {
+
+    const chance =
+        Math.random();
+
+    if (chance > .96) {
+
+        const title =
+            document.querySelector(
+                ".system-status"
+            );
+
+        title.style.opacity = ".2";
+
+        setTimeout(() => {
+            title.style.opacity = "1";
+        }, 120);
+
+    }
+
+}, 1000);
+
+</script>
+
+</body>
+</html>
+```
