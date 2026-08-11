@@ -5,93 +5,82 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SCP-███ // ZERO ROOM</title>
+<title>SCP-1501-J // THE LIZARD</title>
 
 <style>
-
-/* =========================================================
-   SCP DATABASE // CORE
-========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-    --bg: #080909;
-    --panel: #0d0f0f;
-    --panel2: #111414;
-
-    --text: #d7dbd8;
-    --muted: #727a75;
-
-    --green: #9fb8a6;
-    --green2: #c7d9cc;
-
-    --red: #d84b4b;
-    --red2: #ff6464;
-
-    --yellow: #c8ae63;
-
-    --border: #252a27;
-    --border-light: #343b36;
-
-    --mono: "IBM Plex Mono", monospace;
-    --sans: "Inter", sans-serif;
+    --bg:#070909;
+    --panel:#0d1010;
+    --panel2:#111414;
+    --text:#d9dedb;
+    --muted:#737c76;
+    --dim:#4e5751;
+    --green:#9db7a5;
+    --green2:#c9dccf;
+    --red:#d95353;
+    --red2:#ff6b6b;
+    --gold:#c6ad62;
+    --purple:#9b82c7;
+    --cyan:#79aeb1;
+    --border:#252b27;
+    --border2:#353d37;
+    --mono:"IBM Plex Mono",monospace;
+    --sans:"Inter",sans-serif;
 }
 
-
-/* =========================================================
-   RESET
-========================================================= */
-
 * {
-    box-sizing: border-box;
+    box-sizing:border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior:smooth;
 }
 
 body {
-    margin: 0;
-
+    margin:0;
     background:
         radial-gradient(
-            circle at 50% -10%,
-            rgba(150,180,160,.07),
-            transparent 35%
+            circle at 50% -15%,
+            rgba(150,180,160,.075),
+            transparent 38%
         ),
         var(--bg);
-
-    color: var(--text);
-
-    font-family: var(--sans);
-
-    min-height: 100vh;
+    color:var(--text);
+    font-family:var(--sans);
+    min-height:100vh;
 }
 
-
-/* subtle CRT */
-
 body::before {
-    content: "";
-
-    position: fixed;
-    inset: 0;
-
-    pointer-events: none;
-
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:999;
+    opacity:.22;
     background:
         repeating-linear-gradient(
             to bottom,
-            rgba(255,255,255,.012) 0px,
-            rgba(255,255,255,.012) 1px,
+            rgba(255,255,255,.018) 0px,
+            rgba(255,255,255,.018) 1px,
             transparent 2px,
             transparent 4px
         );
+}
 
-    opacity: .35;
-
-    z-index: 999;
+body::after {
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 40%,
+            rgba(0,0,0,.45)
+        );
 }
 
 
@@ -100,108 +89,101 @@ body::before {
 ========================================================= */
 
 header {
-    position: sticky;
-    top: 0;
+    position:sticky;
+    top:0;
+    z-index:100;
 
-    z-index: 100;
+    height:66px;
 
-    height: 64px;
+    display:flex;
+    align-items:center;
 
-    display: flex;
-    align-items: center;
+    padding:0 28px;
 
-    padding: 0 28px;
+    background:rgba(7,9,9,.9);
+    border-bottom:1px solid var(--border);
 
-    background: rgba(8,9,9,.9);
-
-    border-bottom: 1px solid var(--border);
-
-    backdrop-filter: blur(14px);
+    backdrop-filter:blur(15px);
 }
 
 .header-left {
-    display: flex;
-    align-items: center;
-
-    gap: 15px;
+    display:flex;
+    align-items:center;
+    gap:15px;
 }
 
 .foundation-logo {
-    width: 34px;
-    height: 34px;
+    width:35px;
+    height:35px;
 
-    border: 1px solid #707a73;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    border-radius: 50%;
+    border:1px solid #737d76;
+    border-radius:50%;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color:#b4beb7;
 
-    color: #aebbb1;
+    font-family:var(--mono);
+    font-size:9px;
+    font-weight:600;
 
-    font-family: var(--mono);
-    font-size: 12px;
-    font-weight: 600;
+    letter-spacing:-1px;
 }
 
 .header-title {
-    font-family: var(--mono);
-    font-size: 11px;
+    color:#a0aaa3;
 
-    letter-spacing: 2px;
+    font-family:var(--mono);
+    font-size:10px;
 
-    color: #9da69f;
+    letter-spacing:2px;
 }
 
 .header-right {
-    margin-left: auto;
+    margin-left:auto;
 
-    display: flex;
-    align-items: center;
-
-    gap: 18px;
+    display:flex;
+    align-items:center;
+    gap:17px;
 }
 
 .classification {
-    padding: 6px 10px;
+    padding:6px 10px;
 
-    border: 1px solid #493f26;
+    border:1px solid #4d4021;
 
-    color: var(--yellow);
+    color:var(--gold);
 
-    font-family: var(--mono);
-    font-size: 9px;
+    font-family:var(--mono);
+    font-size:8px;
 
-    letter-spacing: 1px;
+    letter-spacing:1px;
 }
 
-.system-status {
-    color: #698072;
+.status {
+    color:#708477;
 
-    font-family: var(--mono);
-    font-size: 9px;
+    font-family:var(--mono);
+    font-size:8px;
 }
 
-.system-status::before {
-    content: "●";
-
-    color: #789c82;
-
-    margin-right: 6px;
+.status::before {
+    content:"●";
+    color:#779982;
+    margin-right:6px;
 }
 
 
 /* =========================================================
-   LAYOUT
+   CONTAINER
 ========================================================= */
 
 .container {
-    width: min(1180px, calc(100% - 40px));
-
-    margin: 0 auto;
-
-    padding: 60px 0 100px;
+    width:min(1200px,calc(100% - 40px));
+    margin:auto;
+    padding:65px 0 100px;
 }
 
 
@@ -210,74 +192,74 @@ header {
 ========================================================= */
 
 .hero {
-    padding-bottom: 45px;
-
-    border-bottom: 1px solid var(--border);
+    padding-bottom:50px;
+    border-bottom:1px solid var(--border);
 }
 
 .eyebrow {
-    color: #68716c;
+    margin-bottom:18px;
 
-    font-family: var(--mono);
-    font-size: 10px;
+    color:#626c65;
 
-    letter-spacing: 2px;
+    font-family:var(--mono);
+    font-size:9px;
 
-    margin-bottom: 20px;
+    letter-spacing:2px;
 }
 
 .eyebrow span {
-    color: var(--red);
+    color:var(--red);
 }
 
 h1 {
-    margin: 0;
+    margin:0;
 
-    font-size: clamp(38px, 7vw, 76px);
+    color:#e5e9e6;
 
-    line-height: .95;
+    font-size:clamp(46px,8vw,90px);
 
-    font-weight: 800;
+    line-height:.9;
 
-    letter-spacing: -4px;
+    letter-spacing:-5px;
 
-    color: #e1e5e2;
+    font-weight:800;
 }
 
-.object-name {
-    margin-top: 15px;
+.codename {
+    margin-top:18px;
 
-    color: #818b84;
+    color:#7f8982;
 
-    font-family: var(--mono);
+    font-family:var(--mono);
+    font-size:13px;
 
-    font-size: 13px;
-
-    letter-spacing: 1px;
+    letter-spacing:2px;
 }
 
 .hero-grid {
-    display: grid;
+    display:grid;
+    grid-template-columns:1fr 330px;
 
-    grid-template-columns: 1fr 320px;
+    gap:60px;
 
-    gap: 55px;
-
-    margin-top: 40px;
+    margin-top:42px;
 }
 
-.description {
-    color: #aeb5b0;
+.intro {
+    color:#aeb6b0;
 
-    line-height: 1.8;
-
-    font-size: 14px;
-
-    max-width: 700px;
+    font-size:14px;
+    line-height:1.9;
 }
 
-.warning-box {
-    border: 1px solid #4c2929;
+.intro strong {
+    color:#dce2dd;
+}
+
+.warning {
+    padding:20px;
+
+    border:1px solid #4b2929;
 
     background:
         linear-gradient(
@@ -285,27 +267,25 @@ h1 {
             rgba(130,30,30,.08),
             transparent
         );
-
-    padding: 18px;
 }
 
 .warning-title {
-    color: var(--red2);
+    margin-bottom:12px;
 
-    font-family: var(--mono);
-    font-size: 9px;
+    color:var(--red2);
 
-    letter-spacing: 1.5px;
+    font-family:var(--mono);
+    font-size:9px;
 
-    margin-bottom: 12px;
+    letter-spacing:1.5px;
 }
 
 .warning-text {
-    color: #aa8585;
+    color:#aa8585;
 
-    font-size: 11px;
+    font-size:11px;
 
-    line-height: 1.7;
+    line-height:1.75;
 }
 
 
@@ -314,59 +294,62 @@ h1 {
 ========================================================= */
 
 .meta {
-    display: grid;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
 
-    grid-template-columns:
-        repeat(4, 1fr);
+    margin-top:45px;
 
-    margin-top: 45px;
-
-    border: 1px solid var(--border);
+    border:1px solid var(--border);
 }
 
 .meta-item {
-    padding: 18px;
+    padding:18px;
 
-    border-right: 1px solid var(--border);
+    border-right:1px solid var(--border);
 }
 
 .meta-item:last-child {
-    border-right: none;
+    border-right:0;
 }
 
 .meta-label {
-    color: #59625d;
+    color:#58615b;
 
-    font-family: var(--mono);
+    font-family:var(--mono);
+    font-size:8px;
 
-    font-size: 8px;
-
-    letter-spacing: 1.5px;
+    letter-spacing:1.3px;
 }
 
 .meta-value {
-    margin-top: 8px;
+    margin-top:8px;
 
-    color: #c1c8c3;
+    color:#c1c9c3;
 
-    font-family: var(--mono);
+    font-family:var(--mono);
+    font-size:11px;
+}
 
-    font-size: 12px;
+.meta-value.impossible {
+    color:var(--purple);
+
+    text-shadow:
+        0 0 15px rgba(155,130,199,.18);
 }
 
 
 /* =========================================================
-   MAIN CONTENT
+   CONTENT
 ========================================================= */
 
 .content-grid {
-    display: grid;
+    display:grid;
 
-    grid-template-columns: 230px 1fr;
+    grid-template-columns:230px 1fr;
 
-    gap: 50px;
+    gap:55px;
 
-    margin-top: 55px;
+    margin-top:55px;
 }
 
 
@@ -375,86 +358,76 @@ h1 {
 ========================================================= */
 
 .sidebar {
-    position: sticky;
-
-    top: 90px;
-
-    align-self: start;
+    position:sticky;
+    top:90px;
+    align-self:start;
 }
 
 .sidebar-title {
-    color: #59625d;
+    margin-bottom:15px;
 
-    font-family: var(--mono);
+    color:#58615b;
 
-    font-size: 9px;
+    font-family:var(--mono);
+    font-size:9px;
 
-    letter-spacing: 1.5px;
-
-    margin-bottom: 15px;
+    letter-spacing:1.5px;
 }
 
 .nav-button {
-    display: block;
+    display:block;
 
-    width: 100%;
+    width:100%;
 
-    padding: 11px 12px;
+    margin-bottom:4px;
+    padding:11px 12px;
 
-    margin-bottom: 4px;
+    background:transparent;
 
-    background: transparent;
+    border:1px solid transparent;
 
-    border: 1px solid transparent;
+    color:#727b75;
 
-    color: #727a75;
+    text-align:left;
 
-    text-align: left;
+    font-family:var(--mono);
+    font-size:9px;
 
-    font-family: var(--mono);
+    cursor:pointer;
 
-    font-size: 10px;
-
-    cursor: pointer;
-
-    transition: .2s;
+    transition:.2s;
 }
 
 .nav-button:hover,
 .nav-button.active {
-    color: #c5cec8;
-
-    background: #111514;
-
-    border-color: var(--border);
+    color:#c5cec8;
+    background:#111514;
+    border-color:var(--border);
 }
 
-.access-box {
-    margin-top: 30px;
+.clearance {
+    margin-top:28px;
+    padding:15px;
 
-    padding: 15px;
+    border:1px solid var(--border);
 
-    border: 1px solid var(--border);
-
-    background: #0b0d0d;
+    background:#0a0c0c;
 }
 
-.access-label {
-    color: #505853;
+.clearance-label {
+    color:#4f5752;
 
-    font-family: var(--mono);
-
-    font-size: 8px;
-
-    margin-bottom: 8px;
+    font-family:var(--mono);
+    font-size:8px;
 }
 
-.access-level {
-    color: var(--green);
+.clearance-value {
+    margin-top:7px;
 
-    font-family: var(--mono);
+    color:var(--green);
 
-    font-size: 10px;
+    font-family:var(--mono);
+    font-size:10px;
 }
 
 
@@ -463,41 +436,48 @@ h1 {
 ========================================================= */
 
 article section {
-    margin-bottom: 65px;
+    margin-bottom:70px;
 }
 
 .section-number {
-    color: #4e5651;
+    margin-bottom:9px;
 
-    font-family: var(--mono);
+    color:#4f5852;
 
-    font-size: 9px;
+    font-family:var(--mono);
+    font-size:9px;
 
-    letter-spacing: 1px;
-
-    margin-bottom: 9px;
+    letter-spacing:1px;
 }
 
 h2 {
-    margin: 0 0 22px;
+    margin:0 0 23px;
 
-    color: #dce1de;
+    color:#dce1de;
 
-    font-size: 25px;
+    font-size:26px;
 
-    letter-spacing: -1px;
+    letter-spacing:-1px;
+}
+
+h3 {
+    color:#c9d0cb;
+
+    font-size:16px;
+
+    margin-top:30px;
 }
 
 p {
-    color: #aeb5b0;
+    color:#adb5af;
 
-    line-height: 1.85;
+    font-size:14px;
 
-    font-size: 14px;
+    line-height:1.9;
 }
 
 strong {
-    color: #d5dbd7;
+    color:#d8ded9;
 }
 
 
@@ -506,9 +486,9 @@ strong {
 ========================================================= */
 
 .containment {
-    padding: 22px;
+    padding:23px;
 
-    border-left: 2px solid #687e6e;
+    border-left:2px solid #748b79;
 
     background:
         linear-gradient(
@@ -519,143 +499,361 @@ strong {
 }
 
 .containment p {
-    margin: 0;
+    margin:0;
 }
 
 
 /* =========================================================
-   INTERACTIVE CAMERA
+   THE LIZARD CARD
+========================================================= */
+
+.lizard-card {
+    position:relative;
+
+    margin:35px 0;
+
+    min-height:330px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    border:1px solid var(--border);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(150,180,160,.045),
+            transparent 50%
+        ),
+        #080a09;
+}
+
+.lizard {
+    position:relative;
+
+    width:240px;
+    height:105px;
+
+    filter:
+        drop-shadow(
+            0 20px 25px rgba(0,0,0,.5)
+        );
+
+    animation:lizardIdle 4s ease-in-out infinite;
+}
+
+@keyframes lizardIdle {
+
+    0%,100% {
+        transform:translateY(0);
+    }
+
+    50% {
+        transform:translateY(-5px);
+    }
+}
+
+.lizard-body {
+    position:absolute;
+
+    left:55px;
+    top:30px;
+
+    width:130px;
+    height:55px;
+
+    border-radius:
+        55% 48% 45% 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #7c8d82,
+            #3d4c43
+        );
+
+    border:1px solid #95a69a;
+}
+
+.lizard-head {
+    position:absolute;
+
+    left:160px;
+    top:24px;
+
+    width:60px;
+    height:50px;
+
+    border-radius:
+        60% 65% 45% 45%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #82968a,
+            #425248
+        );
+
+    border:1px solid #9bab9f;
+}
+
+.eye {
+    position:absolute;
+
+    width:8px;
+    height:8px;
+
+    right:12px;
+    top:12px;
+
+    border-radius:50%;
+
+    background:#111;
+
+    border:1px solid #c6d3ca;
+}
+
+.eye::after {
+    content:"";
+
+    position:absolute;
+
+    inset:2px;
+
+    border-radius:50%;
+
+    background:#e3f0e7;
+}
+
+.leg {
+    position:absolute;
+
+    width:45px;
+    height:13px;
+
+    background:#526259;
+
+    border-radius:100%;
+
+    transform:rotate(25deg);
+}
+
+.leg.one {
+    left:70px;
+    top:70px;
+}
+
+.leg.two {
+    left:125px;
+    top:70px;
+
+    transform:rotate(-20deg);
+}
+
+.tail {
+    position:absolute;
+
+    left:20px;
+    top:47px;
+
+    width:75px;
+    height:18px;
+
+    border-radius:100% 20% 20% 100%;
+
+    background:#4a5a50;
+
+    transform:rotate(-12deg);
+
+    transform-origin:right;
+}
+
+.lizard-caption {
+    position:absolute;
+
+    bottom:15px;
+    left:0;
+    right:0;
+
+    text-align:center;
+
+    color:#505a54;
+
+    font-family:var(--mono);
+    font-size:8px;
+
+    letter-spacing:1.5px;
+}
+
+
+/* =========================================================
+   POWER SCALE
+========================================================= */
+
+.power-scale {
+    margin:35px 0;
+
+    border:1px solid var(--border);
+
+    background:#090b0b;
+}
+
+.scale-header {
+    padding:14px;
+
+    border-bottom:1px solid var(--border);
+
+    color:#727c75;
+
+    font-family:var(--mono);
+
+    font-size:9px;
+
+    letter-spacing:1px;
+}
+
+.scale-row {
+    display:grid;
+
+    grid-template-columns:160px 1fr 90px;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:13px 15px;
+
+    border-bottom:1px solid var(--border);
+
+    font-family:var(--mono);
+
+    font-size:9px;
+}
+
+.scale-row:last-child {
+    border-bottom:0;
+}
+
+.scale-name {
+    color:#737d76;
+}
+
+.bar {
+    height:5px;
+
+    background:#1b201d;
+
+    overflow:hidden;
+}
+
+.bar-fill {
+    height:100%;
+
+    background:#83988a;
+
+    box-shadow:0 0 10px rgba(130,160,140,.2);
+}
+
+.bar-fill.red {
+    background:var(--red);
+}
+
+.bar-fill.purple {
+    background:var(--purple);
+}
+
+.scale-result {
+    color:#9da99f;
+
+    text-align:right;
+}
+
+
+/* =========================================================
+   CAMERA
 ========================================================= */
 
 .camera {
-    border: 1px solid var(--border);
+    border:1px solid var(--border);
 
-    background: #050606;
+    background:#050606;
 
-    overflow: hidden;
+    overflow:hidden;
 }
 
 .camera-top {
-    height: 40px;
+    height:40px;
 
-    display: flex;
-    align-items: center;
+    display:flex;
+    align-items:center;
 
-    padding: 0 13px;
+    padding:0 13px;
 
-    border-bottom: 1px solid var(--border);
+    border-bottom:1px solid var(--border);
 
-    font-family: var(--mono);
+    color:#68716b;
 
-    font-size: 9px;
+    font-family:var(--mono);
 
-    color: #68716b;
+    font-size:9px;
 }
 
 .camera-status {
-    margin-left: auto;
-
-    color: #7f9a87;
+    margin-left:auto;
+    color:#7f9a87;
 }
 
 .camera-screen {
-    position: relative;
+    position:relative;
 
-    height: 330px;
+    height:350px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    overflow: hidden;
+    overflow:hidden;
 
     background:
         radial-gradient(
             ellipse at center,
-            #151917,
-            #050606 65%
+            #171b18,
+            #050606 70%
         );
 }
 
+.floor {
+    position:absolute;
 
-/* room */
+    bottom:0;
+    left:10%;
+    right:10%;
 
-.room {
-    position: relative;
+    height:25%;
 
-    width: 70%;
-    height: 70%;
+    border-top:1px solid #303731;
 
-    border: 1px solid #29302b;
-
-    background:
-        linear-gradient(
-            135deg,
-            #121614,
-            #080a09
-        );
-
-    box-shadow:
-        inset 0 0 60px rgba(0,0,0,.8);
+    transform:perspective(400px) rotateX(20deg);
 }
 
+.camera-lizard {
+    position:relative;
 
-/* object */
+    transform:scale(.7);
 
-.object {
-    position: absolute;
+    transition:.7s;
 
-    width: 45px;
-    height: 45px;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
-    border: 1px solid #829087;
-
-    background: #111513;
-
-    box-shadow:
-        0 0 35px rgba(180,210,190,.05);
-
-    transition:
-        transform .7s,
-        width .7s,
-        height .7s,
-        opacity .7s;
+    z-index:3;
 }
 
-.object::after {
-    content: "?";
+.camera-noise {
+    position:absolute;
+    inset:0;
 
-    position: absolute;
-
-    inset: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: #68766d;
-
-    font-family: var(--mono);
-
-    font-size: 18px;
-}
-
-
-/* camera noise */
-
-.noise {
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    opacity: .08;
+    opacity:.08;
 
     background-image:
         radial-gradient(
@@ -663,97 +861,68 @@ strong {
             transparent 1px
         );
 
-    background-size: 3px 3px;
+    background-size:3px 3px;
 
-    animation: noise .15s infinite;
+    animation:noise .12s infinite;
 }
 
 @keyframes noise {
-    0% {
-        transform: translate(0,0);
-    }
-
-    25% {
-        transform: translate(2px,-1px);
-    }
-
-    50% {
-        transform: translate(-1px,2px);
-    }
-
-    75% {
-        transform: translate(1px,1px);
-    }
-
-    100% {
-        transform: translate(0,0);
-    }
+    0% {transform:translate(0,0)}
+    25% {transform:translate(2px,-1px)}
+    50% {transform:translate(-1px,2px)}
+    75% {transform:translate(1px,1px)}
+    100% {transform:translate(0,0)}
 }
 
-
-/* scan */
-
 .scan {
-    position: absolute;
+    position:absolute;
 
-    left: 0;
-    right: 0;
+    left:0;
+    right:0;
 
-    height: 1px;
+    height:1px;
 
-    background: rgba(170,220,185,.18);
+    background:rgba(180,220,190,.18);
 
-    box-shadow:
-        0 0 10px rgba(170,220,185,.15);
-
-    animation: scan 4s linear infinite;
+    animation:scan 4s linear infinite;
 }
 
 @keyframes scan {
-    from {
-        top: 0;
-    }
-
-    to {
-        top: 100%;
-    }
+    from {top:0}
+    to {top:100%}
 }
 
-
-/* camera controls */
-
 .camera-controls {
-    display: flex;
+    display:flex;
+    gap:7px;
 
-    gap: 8px;
+    padding:11px;
 
-    padding: 12px;
-
-    border-top: 1px solid var(--border);
+    border-top:1px solid var(--border);
 }
 
 .cam-button {
-    flex: 1;
+    flex:1;
 
-    padding: 10px;
+    padding:10px;
 
-    border: 1px solid var(--border);
+    border:1px solid var(--border);
 
-    background: #0d1010;
+    background:#0c0f0e;
 
-    color: #758079;
+    color:#737d76;
 
-    font-family: var(--mono);
+    font-family:var(--mono);
 
-    font-size: 9px;
+    font-size:8px;
 
-    cursor: pointer;
+    cursor:pointer;
 }
 
 .cam-button:hover {
-    color: #c2cec5;
+    color:#ccd5cf;
 
-    border-color: var(--border-light);
+    border-color:var(--border2);
 }
 
 
@@ -762,27 +931,116 @@ strong {
 ========================================================= */
 
 .redacted {
-    display: inline-block;
+    display:inline-block;
 
-    padding: 1px 5px;
+    padding:1px 5px;
 
-    background: #171918;
+    background:#171a18;
 
-    color: transparent;
+    color:transparent;
 
-    border-radius: 2px;
+    cursor:pointer;
 
-    cursor: pointer;
+    border-radius:2px;
 
-    user-select: none;
-
-    transition: .3s;
+    transition:.25s;
 }
 
 .redacted:hover {
-    color: #b9c5bd;
+    color:#bdc9c1;
+    background:#2a302c;
+}
 
-    background: #292e2b;
+
+/* =========================================================
+   RESEARCH LOG
+========================================================= */
+
+.research-log {
+    border:1px solid var(--border);
+}
+
+.log-entry {
+    padding:23px;
+
+    border-bottom:1px solid var(--border);
+}
+
+.log-entry:last-child {
+    border-bottom:0;
+}
+
+.log-head {
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:13px;
+
+    color:#657068;
+
+    font-family:var(--mono);
+
+    font-size:9px;
+}
+
+.log-entry p {
+    margin:0;
+}
+
+.quote {
+    margin:20px 0;
+
+    padding:15px;
+
+    border-left:2px solid #5d6f62;
+
+    background:#0a0d0c;
+
+    color:#aab6ad;
+
+    font-family:var(--mono);
+
+    font-size:10px;
+
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   INCIDENT
+========================================================= */
+
+.incident {
+    border:1px solid #4d2929;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(120,25,25,.06),
+            transparent
+        );
+}
+
+.incident-header {
+    padding:15px;
+
+    border-bottom:1px solid #3b2424;
+
+    color:var(--red2);
+
+    font-family:var(--mono);
+
+    font-size:9px;
+
+    letter-spacing:1px;
+}
+
+.incident-body {
+    padding:22px;
+}
+
+.incident-body p {
+    margin-top:0;
 }
 
 
@@ -790,129 +1048,107 @@ strong {
    TERMINAL
 ========================================================= */
 
-.terminal-box {
-    border: 1px solid var(--border);
+.terminal {
+    border:1px solid var(--border);
 
-    background: #050707;
+    background:#050707;
 
-    font-family: var(--mono);
-
-    overflow: hidden;
+    overflow:hidden;
 }
 
 .terminal-header {
-    padding: 11px 14px;
+    padding:12px 14px;
 
-    border-bottom: 1px solid var(--border);
+    border-bottom:1px solid var(--border);
 
-    color: #68716b;
+    color:#657068;
 
-    font-size: 9px;
+    font-family:var(--mono);
+
+    font-size:9px;
 }
 
 .terminal-body {
-    padding: 20px;
+    padding:20px;
 
-    min-height: 190px;
+    min-height:220px;
 
-    color: #84938a;
+    color:#85938a;
 
-    font-size: 10px;
+    font-family:var(--mono);
 
-    line-height: 1.9;
+    font-size:10px;
+
+    line-height:1.9;
 }
 
 .command {
-    color: #a8b9ad;
+    color:#b0beb5;
 }
 
 .command::before {
-    content: "root@site:~$ ";
+    content:"root@foundation:~$ ";
 
-    color: #587160;
+    color:#58715f;
 }
 
 .cursor {
-    display: inline-block;
+    display:inline-block;
 
-    width: 6px;
-    height: 12px;
+    width:6px;
+    height:12px;
 
-    background: #91aa98;
+    background:#94aa9b;
 
-    vertical-align: middle;
+    animation:blink .8s infinite;
 
-    animation: blink .8s infinite;
+    vertical-align:middle;
 }
 
 @keyframes blink {
-    50% {
-        opacity: 0;
-    }
+    50% {opacity:0}
 }
 
 
 /* =========================================================
-   LOG
+   SECRET
 ========================================================= */
 
-.log {
-    border: 1px solid var(--border);
+.secret {
+    margin-top:30px;
+
+    padding:20px;
+
+    border:1px solid #332946;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(100,70,140,.07),
+            transparent
+        );
 }
 
-.log-row {
-    display: grid;
+.secret-title {
+    color:#9b82c7;
 
-    grid-template-columns: 100px 90px 1fr;
+    font-family:var(--mono);
 
-    padding: 14px;
+    font-size:9px;
 
-    border-bottom: 1px solid var(--border);
+    letter-spacing:1px;
 
-    font-family: var(--mono);
-
-    font-size: 9px;
+    margin-bottom:12px;
 }
 
-.log-row:last-child {
-    border-bottom: none;
-}
+.secret-content {
+    color:#9b91aa;
 
-.log-time {
-    color: #505853;
-}
+    font-family:var(--mono);
 
-.log-type {
-    color: #798a7e;
-}
+    font-size:10px;
 
-.log-text {
-    color: #9ca69f;
-}
-
-
-/* =========================================================
-   ALERT
-========================================================= */
-
-.alert {
-    padding: 18px;
-
-    border: 1px solid #493c20;
-
-    background: rgba(130,100,30,.045);
-
-    color: #ad9a68;
-
-    font-family: var(--mono);
-
-    font-size: 10px;
-
-    line-height: 1.7;
-}
-
-.alert strong {
-    color: #d2b96d;
+    line-height:1.8;
 }
 
 
@@ -921,43 +1157,58 @@ strong {
 ========================================================= */
 
 footer {
-    border-top: 1px solid var(--border);
+    padding:35px 20px;
 
-    padding: 35px 0;
+    border-top:1px solid var(--border);
 
-    color: #4f5852;
+    color:#4f5852;
 
-    font-family: var(--mono);
+    text-align:center;
 
-    font-size: 9px;
+    font-family:var(--mono);
 
-    text-align: center;
+    font-size:8px;
+
+    line-height:2;
 }
 
 
 /* =========================================================
-   EMERGENCY MODE
+   GOD MODE
 ========================================================= */
 
-body.emergency {
-    --red: #ff3030;
-    --red2: #ff4c4c;
+body.god-mode {
+    --green:#d8c8ff;
+    --green2:#eee8ff;
+    --purple:#d9c4ff;
 }
 
-body.emergency .camera-screen {
-    animation: emergencyFlash .5s infinite alternate;
+body.god-mode .camera-screen {
+    background:
+        radial-gradient(
+            circle,
+            rgba(150,100,220,.22),
+            #050606 65%
+        );
 }
 
-@keyframes emergencyFlash {
-    from {
-        filter: none;
-    }
+body.god-mode .camera-lizard {
+    transform:scale(2.5);
 
-    to {
-        filter:
-            sepia(.4)
-            saturate(1.8);
-    }
+    filter:
+        drop-shadow(
+            0 0 35px rgba(180,130,255,.8)
+        );
+}
+
+body.god-mode .foundation-logo {
+    border-color:#bba4e7;
+    color:#d6c5fa;
+}
+
+body.god-mode .classification {
+    border-color:#5a4477;
+    color:#c7a9f4;
 }
 
 
@@ -965,96 +1216,94 @@ body.emergency .camera-screen {
    MOBILE
 ========================================================= */
 
-@media (max-width: 800px) {
+@media(max-width:850px) {
 
     header {
-        padding: 0 15px;
+        padding:0 15px;
     }
 
-    .system-status {
-        display: none;
+    .header-title {
+        font-size:8px;
+    }
+
+    .status {
+        display:none;
     }
 
     .container {
-        width: calc(100% - 28px);
-
-        padding-top: 40px;
+        width:calc(100% - 28px);
+        padding-top:42px;
     }
 
     .hero-grid {
-        grid-template-columns: 1fr;
-
-        gap: 25px;
+        grid-template-columns:1fr;
+        gap:25px;
     }
 
     .meta {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:1fr 1fr;
     }
 
-    .meta-item:nth-child(2) {
-        border-right: none;
-    }
-
-    .meta-item:nth-child(-n+2) {
-        border-bottom: 1px solid var(--border);
+    .meta-item:nth-child(2n) {
+        border-right:0;
     }
 
     .content-grid {
-        grid-template-columns: 1fr;
-
-        gap: 30px;
+        grid-template-columns:1fr;
+        gap:30px;
     }
 
     .sidebar {
-        position: static;
+        position:static;
     }
 
     .nav {
-        display: flex;
-
-        overflow-x: auto;
-
-        gap: 5px;
+        display:flex;
+        overflow-x:auto;
+        gap:5px;
     }
 
     .nav-button {
-        white-space: nowrap;
-
-        width: auto;
+        width:auto;
+        white-space:nowrap;
     }
 
-    .access-box {
-        display: none;
+    .clearance {
+        display:none;
     }
 
-    .camera-screen {
-        height: 270px;
+    .scale-row {
+        grid-template-columns:110px 1fr 70px;
     }
 }
 
 
-@media (max-width: 500px) {
+@media(max-width:500px) {
 
     h1 {
-        letter-spacing: -2px;
+        letter-spacing:-3px;
     }
 
     .meta {
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr;
     }
 
     .meta-item {
-        border-right: none;
-
-        border-bottom: 1px solid var(--border);
+        border-right:0;
+        border-bottom:1px solid var(--border);
     }
 
     .meta-item:last-child {
-        border-bottom: none;
+        border-bottom:0;
     }
 
-    .log-row {
-        grid-template-columns: 70px 70px 1fr;
+    .scale-row {
+        grid-template-columns:1fr;
+        gap:7px;
+    }
+
+    .scale-result {
+        text-align:left;
     }
 }
 
@@ -1078,7 +1327,7 @@ body.emergency .camera-screen {
         </div>
 
         <div class="header-title">
-            FOUNDATION // DATABASE
+            FOUNDATION // SECURE DATABASE
         </div>
 
     </div>
@@ -1087,10 +1336,10 @@ body.emergency .camera-screen {
     <div class="header-right">
 
         <div class="classification">
-            LEVEL 4
+            CLEARANCE LEVEL 4
         </div>
 
-        <div class="system-status">
+        <div class="status">
             SYSTEM ONLINE
         </div>
 
@@ -1100,598 +1349,1292 @@ body.emergency .camera-screen {
 
 
 
-<!-- =====================================================
-     PAGE
-===================================================== -->
-
 <div class="container">
 
 
-    <!-- HERO -->
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-    <section class="hero">
+<section class="hero">
 
-        <div class="eyebrow">
-            DATABASE ENTRY / <span>CLASSIFIED</span>
+    <div class="eyebrow">
+        DATABASE ENTRY / <span>CLASSIFIED</span> / HUMOR DIVISION
+    </div>
+
+
+    <h1>
+        SCP-1501-J
+    </h1>
+
+
+    <div class="codename">
+        "THE LIZARD"
+    </div>
+
+
+    <div class="hero-grid">
+
+
+        <div class="intro">
+
+            SCP-1501-J представляет собой
+            <strong>обычную ящерицу</strong> вида
+            <em>Podarcis muralis</em>.
+
+            <br><br>
+
+            На данный момент Фонд не обнаружил никаких
+            физических отличий SCP-1501-J от обычной ящерицы.
+
+            У него четыре лапы.
+
+            Один хвост.
+
+            Два глаза.
+
+            Он любит греться на камнях.
+
+            Иногда ест насекомых.
+
+            Иногда просто сидит.
+
+            <br><br>
+
+            Согласно всем проведённым исследованиям,
+            SCP-1501-J также является одновременно
+            <strong>высшей формой существования,
+            абсолютным принципом реальности,
+            создателем нескольких мультивселенных
+            и, вероятно, причиной существования самого
+            понятия "существование".</strong>
+
+            <br><br>
+
+            Сам SCP-1501-J, судя по всему,
+            не подозревает об этом.
+
         </div>
 
 
-        <h1>
-            SCP-███
-        </h1>
+        <div class="warning">
 
+            <div class="warning-title">
+                ⚠ CRITICAL INFORMATION
+            </div>
 
-        <div class="object-name">
-            "ZERO ROOM"
-        </div>
+            <div class="warning-text">
 
-
-        <div class="hero-grid">
-
-            <div class="description">
-
-                SCP-███ — обозначение аномального помещения,
-                обнаруженного в недействующем исследовательском
-                комплексе.
+                НЕ ПЫТАЙТЕСЬ УБИТЬ SCP-1501-J.
 
                 <br><br>
 
-                Объект представляет собой комнату размером
-                приблизительно 6 × 6 × 3 метра. Внутреннее
-                пространство визуально не отличается от обычного
-                бетонного помещения.
+                Предыдущий эксперимент привёл к удалению
+                из реальности трёх измерений, двух сотрудников
+                и одной кофемашины.
 
                 <br><br>
 
-                Однако любые попытки получить изображение,
-                точные измерения или длительную запись поведения
-                SCP-███ приводят к <strong>несогласованным
-                результатам</strong>.
-
-            </div>
-
-
-            <div class="warning-box">
-
-                <div class="warning-title">
-                    ⚠ CONTAINMENT NOTICE
-                </div>
-
-                <div class="warning-text">
-
-                    Персоналу запрещено находиться
-                    внутри объекта более 90 секунд.
-
-                    <br><br>
-
-                    При обнаружении изменений
-                    конфигурации помещения немедленно
-                    покинуть сектор.
-
-                </div>
+                Ящерица просто продолжила сидеть на камне.
 
             </div>
 
         </div>
-
-
-        <!-- META -->
-
-        <div class="meta">
-
-            <div class="meta-item">
-
-                <div class="meta-label">
-                    OBJECT CLASS
-                </div>
-
-                <div class="meta-value">
-                    EUCLID
-                </div>
-
-            </div>
-
-
-            <div class="meta-item">
-
-                <div class="meta-label">
-                    STATUS
-                </div>
-
-                <div class="meta-value">
-                    CONTAINED
-                </div>
-
-            </div>
-
-
-            <div class="meta-item">
-
-                <div class="meta-label">
-                    THREAT LEVEL
-                </div>
-
-                <div class="meta-value">
-                    MODERATE
-                </div>
-
-            </div>
-
-
-            <div class="meta-item">
-
-                <div class="meta-label">
-                    CLEARANCE
-                </div>
-
-                <div class="meta-value">
-                    LEVEL 4+
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- CONTENT -->
-
-    <div class="content-grid">
-
-
-        <!-- SIDEBAR -->
-
-        <aside class="sidebar">
-
-            <div class="sidebar-title">
-                DOCUMENT INDEX
-            </div>
-
-
-            <nav class="nav">
-
-                <button
-                    class="nav-button active"
-                    onclick="scrollToSection('containment')"
-                >
-                    01 / CONTAINMENT
-                </button>
-
-
-                <button
-                    class="nav-button"
-                    onclick="scrollToSection('description')"
-                >
-                    02 / DESCRIPTION
-                </button>
-
-
-                <button
-                    class="nav-button"
-                    onclick="scrollToSection('camera')"
-                >
-                    03 / CAMERA FEED
-                </button>
-
-
-                <button
-                    class="nav-button"
-                    onclick="scrollToSection('incident')"
-                >
-                    04 / INCIDENT
-                </button>
-
-
-                <button
-                    class="nav-button"
-                    onclick="scrollToSection('terminal')"
-                >
-                    05 / TERMINAL
-                </button>
-
-            </nav>
-
-
-            <div class="access-box">
-
-                <div class="access-label">
-                    CURRENT CLEARANCE
-                </div>
-
-                <div class="access-level">
-                    LEVEL 4 / AUTHORIZED
-                </div>
-
-            </div>
-
-        </aside>
-
-
-
-        <!-- ARTICLE -->
-
-        <article>
-
-
-            <!-- CONTAINMENT -->
-
-            <section id="containment">
-
-                <div class="section-number">
-                    SECTION 01
-                </div>
-
-                <h2>
-                    Special Containment Procedures
-                </h2>
-
-
-                <div class="containment">
-
-                    <p>
-
-                        SCP-███ содержится в секторе ██
-                        Исследовательского комплекса-██.
-
-                        <br><br>
-
-                        Доступ разрешён исключительно сотрудникам
-                        с уровнем допуска 4/███ или выше.
-
-                        <br><br>
-
-                        Вокруг помещения установлены три независимые
-                        системы наблюдения. Все видеопотоки должны
-                        записываться одновременно.
-
-                        <br><br>
-
-                        <strong>
-                            В случае рассинхронизации камер
-                            персонал обязан покинуть помещение.
-                        </strong>
-
-                    </p>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- DESCRIPTION -->
-
-            <section id="description">
-
-                <div class="section-number">
-                    SECTION 02
-                </div>
-
-                <h2>
-                    Description
-                </h2>
-
-
-                <p>
-
-                    SCP-███ выглядит как пустая бетонная комната.
-                    В центре помещения находится неизвестный объект,
-                    обозначаемый как SCP-███-1.
-
-                </p>
-
-
-                <p>
-
-                    SCP-███-1 невозможно описать с достаточной
-                    точностью.
-
-                    Каждый сотрудник, наблюдающий его лично,
-                    предоставляет различное описание.
-
-                    <br><br>
-
-                    Один из исследователей назвал его
-                    <span class="redacted">
-                        "дверью без стены"
-                    </span>.
-
-                    Другой утверждал, что объект имеет форму
-                    <span class="redacted">
-                        человеческого силуэта
-                    </span>.
-
-                    Третий сотрудник заявил, что
-                    <span class="redacted">
-                        никакого объекта никогда не существовало.
-                    </span>
-
-                </p>
-
-
-                <div class="alert">
-
-                    <strong>
-                        DOCUMENT WARNING
-                    </strong>
-
-                    <br><br>
-
-                    Некоторые части описания были удалены
-                    после инцидента ███-04.
-
-                    Наведение курсора на засекреченные
-                    фрагменты раскрывает их содержимое.
-
-                </div>
-
-            </section>
-
-
-
-            <!-- CAMERA -->
-
-            <section id="camera">
-
-                <div class="section-number">
-                    SECTION 03
-                </div>
-
-                <h2>
-                    Live Surveillance Feed
-                </h2>
-
-
-                <div class="camera">
-
-                    <div class="camera-top">
-
-                        CAM-03
-                        //
-                        SECTOR ███
-
-                        <span class="camera-status">
-                            ● RECORDING
-                        </span>
-
-                    </div>
-
-
-                    <div class="camera-screen">
-
-                        <div class="room">
-
-                            <div
-                                class="object"
-                                id="scpObject"
-                            ></div>
-
-                        </div>
-
-
-                        <div class="noise"></div>
-
-                        <div class="scan"></div>
-
-                    </div>
-
-
-                    <div class="camera-controls">
-
-                        <button
-                            class="cam-button"
-                            onclick="cameraNormal()"
-                        >
-                            NORMAL
-                        </button>
-
-                        <button
-                            class="cam-button"
-                            onclick="cameraGlitch()"
-                        >
-                            ANALYZE
-                        </button>
-
-                        <button
-                            class="cam-button"
-                            onclick="cameraBreach()"
-                        >
-                            ⚠ INCIDENT
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- INCIDENT -->
-
-            <section id="incident">
-
-                <div class="section-number">
-                    SECTION 04
-                </div>
-
-                <h2>
-                    Incident Log
-                </h2>
-
-
-                <div class="log">
-
-                    <div class="log-row">
-
-                        <div class="log-time">
-                            03:14:02
-                        </div>
-
-                        <div class="log-type">
-                            SYSTEM
-                        </div>
-
-                        <div class="log-text">
-                            Camera 03 connected.
-                        </div>
-
-                    </div>
-
-
-                    <div class="log-row">
-
-                        <div class="log-time">
-                            03:14:17
-                        </div>
-
-                        <div class="log-type">
-                            WARNING
-                        </div>
-
-                        <div class="log-text">
-                            Spatial measurement mismatch.
-                        </div>
-
-                    </div>
-
-
-                    <div class="log-row">
-
-                        <div class="log-time">
-                            03:14:19
-                        </div>
-
-                        <div class="log-type">
-                            UNKNOWN
-                        </div>
-
-                        <div class="log-text">
-                            Additional object detected.
-                        </div>
-
-                    </div>
-
-
-                    <div class="log-row">
-
-                        <div class="log-time">
-                            03:14:20
-                        </div>
-
-                        <div class="log-type">
-                            ERROR
-                        </div>
-
-                        <div class="log-text">
-                            Camera 03 returned impossible frame.
-                        </div>
-
-                    </div>
-
-
-                    <div class="log-row">
-
-                        <div class="log-time">
-                            03:14:21
-                        </div>
-
-                        <div class="log-type">
-                            █████
-                        </div>
-
-                        <div class="log-text">
-                            <span class="redacted">
-                                THERE IS SOMEONE IN THE ROOM.
-                            </span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- TERMINAL -->
-
-            <section id="terminal">
-
-                <div class="section-number">
-                    SECTION 05
-                </div>
-
-                <h2>
-                    Internal Terminal
-                </h2>
-
-
-                <div class="terminal-box">
-
-                    <div class="terminal-header">
-                        FOUNDATION TERMINAL // NODE-██
-                    </div>
-
-
-                    <div
-                        class="terminal-body"
-                        id="terminalOutput"
-                    >
-
-                        <div>
-                            SCP FOUNDATION INTERNAL NETWORK
-                        </div>
-
-                        <div>
-                            CONNECTION ESTABLISHED.
-                        </div>
-
-                        <br>
-
-                        <div class="command">
-                            status
-                        </div>
-
-                        <div>
-                            > containment: STABLE
-                        </div>
-
-                        <div>
-                            > surveillance: ACTIVE
-                        </div>
-
-                        <div>
-                            > anomaly: PRESENT
-                        </div>
-
-                        <br>
-
-                        <div class="command">
-                            type "help" for available commands
-                        </div>
-
-                        <br>
-
-                        <div>
-                            <span class="command">
-                                _
-                            </span>
-                            <span class="cursor"></span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-        </article>
 
     </div>
+
+
+    <!-- META -->
+
+    <div class="meta">
+
+
+        <div class="meta-item">
+
+            <div class="meta-label">
+                OBJECT CLASS
+            </div>
+
+            <div class="meta-value">
+                SAFE
+            </div>
+
+        </div>
+
+
+        <div class="meta-item">
+
+            <div class="meta-label">
+                SECONDARY CLASS
+            </div>
+
+            <div class="meta-value">
+                ███████
+            </div>
+
+        </div>
+
+
+        <div class="meta-item">
+
+            <div class="meta-label">
+                THREAT
+            </div>
+
+            <div class="meta-value impossible">
+                YES
+            </div>
+
+        </div>
+
+
+        <div class="meta-item">
+
+            <div class="meta-label">
+                COSMIC RANK
+            </div>
+
+            <div class="meta-value impossible">
+                UNKNOWN
+            </div>
+
+        </div>
+
+
+        <div class="meta-item">
+
+            <div class="meta-label">
+                CURRENT MOOD
+            </div>
+
+            <div class="meta-value">
+                HUNGRY
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTENT
+===================================================== -->
+
+<div class="content-grid">
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-title">
+        DOCUMENT INDEX
+    </div>
+
+
+    <nav>
+
+        <button
+            class="nav-button active"
+            onclick="scrollToSection('containment')"
+        >
+            01 / CONTAINMENT
+        </button>
+
+
+        <button
+            class="nav-button"
+            onclick="scrollToSection('description')"
+        >
+            02 / DESCRIPTION
+        </button>
+
+
+        <button
+            class="nav-button"
+            onclick="scrollToSection('scale')"
+        >
+            03 / POWER SCALE
+        </button>
+
+
+        <button
+            class="nav-button"
+            onclick="scrollToSection('camera')"
+        >
+            04 / LIVE FEED
+        </button>
+
+
+        <button
+            class="nav-button"
+            onclick="scrollToSection('research')"
+        >
+            05 / RESEARCH LOGS
+        </button>
+
+
+        <button
+            class="nav-button"
+            onclick="scrollToSection('incident')"
+        >
+            06 / INCIDENTS
+        </button>
+
+
+        <button
+            class="nav-button"
+            onclick="scrollToSection('terminal')"
+        >
+            07 / TERMINAL
+        </button>
+
+    </nav>
+
+
+    <div class="clearance">
+
+        <div class="clearance-label">
+            CURRENT CLEARANCE
+        </div>
+
+        <div class="clearance-value">
+            LEVEL 4 / AUTHORIZED
+        </div>
+
+    </div>
+
+</aside>
+
+
+
+<!-- ARTICLE -->
+
+<article>
+
+
+<!-- =====================================================
+     CONTAINMENT
+===================================================== -->
+
+<section id="containment">
+
+    <div class="section-number">
+        SECTION 01
+    </div>
+
+    <h2>
+        Special Containment Procedures
+    </h2>
+
+
+    <div class="containment">
+
+        <p>
+
+            SCP-1501-J содержится в специально оборудованном
+            террариуме площадью 0,8 м² в Биологическом секторе
+            Исследовательского комплекса-██.
+
+            <br><br>
+
+            Внутри террариума должны находиться:
+
+            <br><br>
+
+            — один камень;
+
+            <br>
+
+            — две ветки;
+
+            <br>
+
+            — миска с водой;
+
+            <br>
+
+            — живые насекомые;
+
+            <br>
+
+            — источник тепла;
+
+            <br>
+
+            — ничего, что SCP-1501-J не просил.
+
+            <br><br>
+
+            Последний пункт был добавлен после того,
+            как исследователь ███████ попытался разместить
+            внутри террариума игрушечную машинку.
+
+            В результате игрушечная машинка стала
+            <strong>концептуальным богом скорости</strong>
+            и была уничтожена.
+
+            <br><br>
+
+            <strong>
+                SCP-1501-J запрещено подвергать стрессу,
+                оскорблять, будить без необходимости
+                и спрашивать его о смысле жизни.
+            </strong>
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DESCRIPTION
+===================================================== -->
+
+<section id="description">
+
+    <div class="section-number">
+        SECTION 02
+    </div>
+
+    <h2>
+        Description
+    </h2>
+
+
+    <p>
+
+        SCP-1501-J внешне представляет собой небольшую
+        зелёно-коричневую ящерицу длиной около 17 см.
+
+        <br><br>
+
+        Объект не демонстрирует повышенного интеллекта,
+        телепатии или какой-либо очевидной аномальной
+        активности.
+
+        Он не разговаривает.
+
+        Не летает.
+
+        Не стреляет лазерами.
+
+        Не создаёт чёрные дыры.
+
+        Не контролирует разум.
+
+        <br><br>
+
+        По крайней мере,
+        <strong>намеренно.</strong>
+
+    </p>
+
+
+    <p>
+
+        Первые аномальные свойства были обнаружены,
+        когда исследовательская группа попыталась
+        определить температуру тела объекта.
+
+        Термометр показал:
+
+    </p>
+
+
+    <div class="quote">
+
+        36.7 °C
+
+        <br><br>
+
+        После чего прибор внезапно показал:
+
+        <br>
+
+        36.7 °C
+
+        <br><br>
+
+        Затем:
+
+        <br>
+
+        36.7 °C
+
+        <br><br>
+
+        Затем термометр сообщил,
+        что температура SCP-1501-J равна
+        <strong>температуре Вселенной.</strong>
+
+        <br><br>
+
+        После этого прибор начал плакать.
+
+    </div>
+
+
+    <p>
+
+        В дальнейшем выяснилось, что SCP-1501-J
+        не просто существует внутри Вселенной.
+
+        Согласно некоторым экспериментам,
+        <strong>Вселенная существует внутри SCP-1501-J,
+        но только тогда, когда ему интересно.</strong>
+
+    </p>
+
+
+    <p>
+
+        Данная теория считается маловероятной.
+
+        Однако отдел теоретической физики не смог
+        предложить более вероятную.
+
+    </p>
+
+
+    <!-- LIZARD -->
+
+    <div class="lizard-card">
+
+        <div class="lizard">
+
+            <div class="tail"></div>
+
+            <div class="lizard-body"></div>
+
+            <div class="lizard-head">
+
+                <div class="eye"></div>
+
+            </div>
+
+            <div class="leg one"></div>
+            <div class="leg two"></div>
+
+        </div>
+
+
+        <div class="lizard-caption">
+            FIGURE 1501-J-01 // SCP-1501-J
+        </div>
+
+    </div>
+
+
+    <p>
+
+        На фотографии выше изображён SCP-1501-J.
+
+        <br><br>
+
+        Это одна из наиболее точных фотографий,
+        когда-либо полученных Фондом.
+
+        <br><br>
+
+        В момент создания изображения
+        фотограф находился на расстоянии 4,2 метра
+        от объекта.
+
+        <br><br>
+
+        На 17-м кадре EXIF-данные фотографии
+        содержали координаты:
+
+        <span class="redacted">
+            ███████████████████████████
+        </span>
+
+        После раскрытия фрагмента
+        координаты указывали на
+        <strong>центр наблюдаемой Вселенной.</strong>
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     POWER SCALE
+===================================================== -->
+
+<section id="scale">
+
+    <div class="section-number">
+        SECTION 03
+    </div>
+
+    <h2>
+        Ontological Threat Assessment
+    </h2>
+
+
+    <p>
+
+        Отдел аномальных измерений попытался
+        классифицировать SCP-1501-J по стандартной
+        шкале угроз.
+
+        Результаты оказались неудовлетворительными.
+
+    </p>
+
+
+    <div class="power-scale">
+
+        <div class="scale-header">
+            COMPARATIVE POWER ANALYSIS
+        </div>
+
+
+        <div class="scale-row">
+
+            <div class="scale-name">
+                HUMAN
+            </div>
+
+            <div class="bar">
+                <div
+                    class="bar-fill"
+                    style="width:4%"
+                ></div>
+            </div>
+
+            <div class="scale-result">
+                4%
+            </div>
+
+        </div>
+
+
+        <div class="scale-row">
+
+            <div class="scale-name">
+                DEMIGOD
+            </div>
+
+            <div class="bar">
+                <div
+                    class="bar-fill"
+                    style="width:17%"
+                ></div>
+            </div>
+
+            <div class="scale-result">
+                17%
+            </div>
+
+        </div>
+
+
+        <div class="scale-row">
+
+            <div class="scale-name">
+                GOD
+            </div>
+
+            <div class="bar">
+                <div
+                    class="bar-fill"
+                    style="width:43%"
+                ></div>
+            </div>
+
+            <div class="scale-result">
+                43%
+            </div>
+
+        </div>
+
+
+        <div class="scale-row">
+
+            <div class="scale-name">
+                ELDER ENTITY
+            </div>
+
+            <div class="bar">
+                <div
+                    class="bar-fill red"
+                    style="width:71%"
+                ></div>
+            </div>
+
+            <div class="scale-result">
+                71%
+            </div>
+
+        </div>
+
+
+        <div class="scale-row">
+
+            <div class="scale-name">
+                MULTIVERSAL
+            </div>
+
+            <div class="bar">
+                <div
+                    class="bar-fill purple"
+                    style="width:100%"
+                ></div>
+            </div>
+
+            <div class="scale-result">
+                ERROR
+            </div>
+
+        </div>
+
+
+        <div class="scale-row">
+
+            <div class="scale-name">
+                SCP-1501-J
+            </div>
+
+            <div class="bar">
+                <div
+                    class="bar-fill purple"
+                    style="width:100%"
+                ></div>
+            </div>
+
+            <div class="scale-result">
+                WHY
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <p>
+
+        После третьего теста руководитель проекта
+        запретил дальнейшие попытки измерения
+        "уровня силы" SCP-1501-J.
+
+        Причиной стало то, что каждый новый тест
+        приводил к увеличению количества нулей
+        в отчёте.
+
+        В конечном результате файл достиг
+        размера 8,4 ТБ и состоял исключительно
+        из цифры <strong>1</strong>.
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     CAMERA
+===================================================== -->
+
+<section id="camera">
+
+    <div class="section-number">
+        SECTION 04
+    </div>
+
+    <h2>
+        Live Surveillance Feed
+    </h2>
+
+
+    <div class="camera">
+
+        <div class="camera-top">
+
+            CAM-1501-J
+
+            //
+
+            BIOLOGICAL SECTOR
+
+            <span class="camera-status">
+                ● RECORDING
+            </span>
+
+        </div>
+
+
+        <div class="camera-screen">
+
+            <div class="floor"></div>
+
+
+            <div
+                class="camera-lizard lizard"
+                id="cameraLizard"
+            >
+
+                <div class="tail"></div>
+
+                <div class="lizard-body"></div>
+
+                <div class="lizard-head">
+                    <div class="eye"></div>
+                </div>
+
+                <div class="leg one"></div>
+                <div class="leg two"></div>
+
+            </div>
+
+
+            <div class="camera-noise"></div>
+
+            <div class="scan"></div>
+
+        </div>
+
+
+        <div class="camera-controls">
+
+            <button
+                class="cam-button"
+                onclick="normalCamera()"
+            >
+                NORMAL
+            </button>
+
+
+            <button
+                class="cam-button"
+                onclick="analyzeCamera()"
+            >
+                ANALYZE
+            </button>
+
+
+            <button
+                class="cam-button"
+                onclick="godMode()"
+            >
+                ██ UNKNOWN
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     RESEARCH LOG
+===================================================== -->
+
+<section id="research">
+
+    <div class="section-number">
+        SECTION 05
+    </div>
+
+    <h2>
+        Research Logs
+    </h2>
+
+
+    <div class="research-log">
+
+
+        <!-- LOG 01 -->
+
+        <div class="log-entry">
+
+            <div class="log-head">
+
+                <span>
+                    LOG #1501-01
+                </span>
+
+                <span>
+                    DR. KOVAL / 09:21
+                </span>
+
+            </div>
+
+
+            <p>
+
+                <strong>Dr. Коваль:</strong>
+                Итак. Мы проверим, способен ли объект
+                понимать человеческую речь.
+
+                <br><br>
+
+                SCP-1501-J сидит на камне.
+
+            </p>
+
+
+            <div class="quote">
+
+                Д-р Коваль:
+                "SCP-1501-J, если вы меня понимаете,
+                поверните голову."
+
+                <br><br>
+
+                [SCP-1501-J поворачивает голову.]
+
+                <br><br>
+
+                Д-р Коваль:
+                "..."
+
+                <br><br>
+
+                Д-р Коваль:
+                "Ладно."
+
+            </div>
+
+
+            <p>
+
+                Эксперимент прекращён.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- LOG 02 -->
+
+        <div class="log-entry">
+
+            <div class="log-head">
+
+                <span>
+                    LOG #1501-02
+                </span>
+
+                <span>
+                    DR. PETROV / 13:44
+                </span>
+
+            </div>
+
+
+            <p>
+
+                Была предпринята попытка определить
+                максимальную скорость SCP-1501-J.
+
+                <br><br>
+
+                Объект был помещён на беговую дорожку.
+
+                <br><br>
+
+                Скорость дорожки постепенно увеличивалась.
+
+            </p>
+
+
+            <div class="quote">
+
+                10 км/ч — объект стоит.
+
+                <br>
+
+                20 км/ч — объект стоит.
+
+                <br>
+
+                50 км/ч — объект стоит.
+
+                <br>
+
+                200 км/ч — объект стоит.
+
+                <br>
+
+                1000 км/ч — объект стоит.
+
+                <br>
+
+                999999999 км/ч — объект смотрит
+                на исследователя.
+
+                <br><br>
+
+                Исследователь:
+                "Извините."
+
+                <br><br>
+
+                Объект продолжает смотреть.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- LOG 03 -->
+
+        <div class="log-entry">
+
+            <div class="log-head">
+
+                <span>
+                    LOG #1501-03
+                </span>
+
+                <span>
+                    DR. █████ / 18:02
+                </span>
+
+            </div>
+
+
+            <p>
+
+                Я решил спросить SCP-1501-J,
+                кем он является.
+
+                <br><br>
+
+                Он посмотрел на меня.
+
+                Затем посмотрел на стену.
+
+                Затем на потолок.
+
+                Затем снова на меня.
+
+                <br><br>
+
+                После этого вся электроника
+                в комнате одновременно показала:
+
+            </p>
+
+
+            <div class="quote">
+
+                "Я просто ящерка."
+
+            </div>
+
+
+            <p>
+
+                Мы больше не обсуждали этот вопрос.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- LOG 04 -->
+
+        <div class="log-entry">
+
+            <div class="log-head">
+
+                <span>
+                    LOG #1501-04
+                </span>
+
+                <span>
+                    O5-██ / CLASSIFIED
+                </span>
+
+            </div>
+
+
+            <p>
+
+                Совет O5 постановил прекратить
+                любые эксперименты, направленные
+                на определение истинной природы объекта.
+
+                <br><br>
+
+                В официальном документе причина
+                указана как:
+
+            </p>
+
+
+            <div class="quote">
+
+                "Нам просто страшно."
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     INCIDENT
+===================================================== -->
+
+<section id="incident">
+
+    <div class="section-number">
+        SECTION 06
+    </div>
+
+    <h2>
+        Incident 1501-J-██
+    </h2>
+
+
+    <div class="incident">
+
+        <div class="incident-header">
+            ⚠ CONTAINMENT INCIDENT // LEVEL BLACK
+        </div>
+
+
+        <div class="incident-body">
+
+            <p>
+
+                14.██.20██ в 02:13 SCP-1501-J
+                покинул свой террариум.
+
+                <br><br>
+
+                Система безопасности зафиксировала
+                отсутствие объекта.
+
+                <br><br>
+
+                Через 4 секунды были активированы
+                протоколы полного карантина.
+
+            </p>
+
+
+            <div class="quote">
+
+                02:13:04 — объект отсутствует.
+
+                <br>
+
+                02:13:05 — объект обнаружен
+                в коридоре.
+
+                <br>
+
+                02:13:06 — объект отсутствует
+                в коридоре.
+
+                <br>
+
+                02:13:07 — объект обнаружен
+                на Луне.
+
+                <br>
+
+                02:13:08 — объект обнаружен
+                в кабинете директора.
+
+                <br>
+
+                02:13:09 — объект обнаружен
+                в прошлом.
+
+                <br>
+
+                02:13:10 — объект обнаружен
+                в будущем.
+
+                <br>
+
+                02:13:11 — объект обнаружен
+                в террариуме.
+
+            </div>
+
+
+            <p>
+
+                После возвращения SCP-1501-J
+                в террариум объект съел двух сверчков
+                и лёг на камень.
+
+                <br><br>
+
+                Причина инцидента неизвестна.
+
+                <br><br>
+
+                Видеозапись показывает,
+                что перед исчезновением SCP-1501-J
+                просто чихнул.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TERMINAL
+===================================================== -->
+
+<section id="terminal">
+
+    <div class="section-number">
+        SECTION 07
+    </div>
+
+    <h2>
+        Foundation Terminal
+    </h2>
+
+
+    <div class="terminal">
+
+        <div class="terminal-header">
+            FOUNDATION INTERNAL NODE // SCP-1501-J
+        </div>
+
+
+        <div
+            class="terminal-body"
+            id="terminalOutput"
+        >
+
+            SCP FOUNDATION INTERNAL NETWORK
+
+            <br>
+
+            CONNECTION ESTABLISHED.
+
+            <br>
+
+            AUTHENTICATION: LEVEL 4
+
+            <br><br>
+
+            Type
+            <strong>help</strong>
+            for available commands.
+
+            <br><br>
+
+            <span class="command">
+                status
+            </span>
+
+            <br>
+
+            > containment: STABLE
+
+            <br>
+
+            > object: RESTING
+
+            <br>
+
+            > threat: ███████
+
+            <br>
+
+            > current_activity: EATING
+
+            <br><br>
+
+            <span class="cursor"></span>
+
+        </div>
+
+    </div>
+
+
+    <div class="secret">
+
+        <div class="secret-title">
+            █████ / O5-ONLY INFORMATION
+        </div>
+
+
+        <div class="secret-content">
+
+            Документ разблокирован автоматически
+            после просмотра SCP-1501-J более 30 секунд.
+
+            <br><br>
+
+            Согласно гипотезе Совета O5,
+            SCP-1501-J не является существом,
+            обладающим невероятной силой.
+
+            <br><br>
+
+            Напротив.
+
+            <br><br>
+
+            Возможно, SCP-1501-J —
+            это единственное существо,
+            которое существует абсолютно нормально.
+
+            <br><br>
+
+            А всё остальное вокруг него
+            является аномалией.
+
+            <br><br>
+
+            <strong>
+                В таком случае SCP Foundation,
+                Земля, человечество,
+                пространство, время и сама Вселенная
+                являются частью его террариума.
+            </strong>
+
+            <br><br>
+
+            Документ закрыт.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</article>
+
+</div>
 
 </div>
 
@@ -1700,8 +2643,16 @@ body.emergency .camera-screen {
 <footer>
 
     SCP FOUNDATION DATABASE //
-    DOCUMENT SCP-███ //
-    UNAUTHORIZED DUPLICATION PROHIBITED
+
+    SCP-1501-J //
+
+    "THE LIZARD"
+
+    <br>
+
+    UNAUTHORIZED DUPLICATION PROHIBITED //
+
+    DOCUMENT STATUS: ACTIVE
 
 </footer>
 
@@ -1721,18 +2672,10 @@ function scrollToSection(id) {
     if (!element) return;
 
     element.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
+        behavior:"smooth",
+        block:"start"
     });
 
-
-    document
-        .querySelectorAll(".nav-button")
-        .forEach(button => {
-
-            button.classList.remove("active");
-
-        });
 }
 
 
@@ -1740,91 +2683,88 @@ function scrollToSection(id) {
    CAMERA
 ========================================================= */
 
-const object =
-    document.getElementById("scpObject");
+const lizard =
+    document.getElementById("cameraLizard");
 
 
-function cameraNormal() {
+function normalCamera() {
 
-    document.body.classList.remove("emergency");
+    document.body.classList.remove("god-mode");
 
-    object.style.width = "45px";
-    object.style.height = "45px";
-    object.style.opacity = "1";
-    object.style.transform =
-        "translate(-50%, -50%)";
+    lizard.style.transform =
+        "scale(.7)";
 
 }
 
 
-function cameraGlitch() {
+function analyzeCamera() {
 
-    document.body.classList.remove("emergency");
+    document.body.classList.remove("god-mode");
 
-    let counter = 0;
+    let count = 0;
+
 
     const interval =
         setInterval(() => {
 
+            const scale =
+                .4 + Math.random() * 1.5;
+
             const x =
-                Math.random() * 20 - 10;
+                Math.random() * 30 - 15;
 
             const y =
                 Math.random() * 20 - 10;
 
-            const scale =
-                0.7 + Math.random() * 1.8;
 
-            object.style.transform =
+            lizard.style.transform =
                 `translate(
-                    calc(-50% + ${x}px),
-                    calc(-50% + ${y}px)
+                    ${x}px,
+                    ${y}px
                 )
                 scale(${scale})`;
 
-            object.style.opacity =
-                0.4 + Math.random() * .6;
 
-            counter++;
+            count++;
 
-            if (counter > 12) {
+
+            if (count >= 12) {
 
                 clearInterval(interval);
 
-                object.style.transform =
-                    "translate(-50%, -50%)";
-
-                object.style.opacity = "1";
+                lizard.style.transform =
+                    "scale(.7)";
 
             }
 
-        }, 100);
+        },90);
+
 }
 
 
-function cameraBreach() {
+function godMode() {
 
-    document.body.classList.add("emergency");
+    document.body.classList.add("god-mode");
 
-    object.style.width = "90px";
-    object.style.height = "150px";
 
-    object.style.transform =
-        "translate(-50%, -50%)";
-
-    object.style.opacity = ".9";
+    lizard.style.transform =
+        "scale(2.5)";
 
 
     setTimeout(() => {
 
         alert(
-            "CONTAINMENT ALERT\n\n" +
-            "CAMERA 03 REPORTS AN UNKNOWN " +
-            "ENTITY INSIDE THE CHAMBER.\n\n" +
-            "ALL PERSONNEL EVACUATE SECTOR ███."
+            "ANOMALOUS EVENT\n\n" +
+            "CAMERA 1501-J HAS DETECTED " +
+            "AN ENTITY OUTSIDE OF " +
+            "THE CURRENT REALITY.\n\n" +
+            "ENTITY IDENTIFICATION:\n\n" +
+            "SCP-1501-J\n\n" +
+            "STATUS:\n" +
+            "STILL JUST A LIZARD."
         );
 
-    }, 500);
+    },600);
 
 }
 
@@ -1833,44 +2773,41 @@ function cameraBreach() {
    TERMINAL
 ========================================================= */
 
-const terminalOutput =
-    document.getElementById("terminalOutput");
+const output =
+    document.getElementById(
+        "terminalOutput"
+    );
 
 
 document.addEventListener(
     "keydown",
-    function(event) {
+    event => {
 
-        if (event.key !== "Enter") {
+        if (event.key !== "Enter")
             return;
-        }
-
-
-        const active =
-            document.activeElement;
-
-
-        if (
-            active &&
-            active.tagName === "INPUT"
-        ) {
-            return;
-        }
 
 
         const command =
             prompt(
                 "FOUNDATION TERMINAL\n\n" +
-                "Введите команду:\n" +
-                "help / status / camera / breach / clear"
+                "Available commands:\n" +
+                "help\n" +
+                "status\n" +
+                "powers\n" +
+                "lizard\n" +
+                "god\n" +
+                "clear"
             );
 
 
-        if (!command) return;
+        if (!command)
+            return;
 
 
         executeCommand(
-            command.trim().toLowerCase()
+            command
+                .trim()
+                .toLowerCase()
         );
 
     }
@@ -1888,9 +2825,10 @@ function executeCommand(command) {
 
             response =
                 "AVAILABLE COMMANDS:<br>" +
-                "status — system status<br>" +
-                "camera — open camera feed<br>" +
-                "breach — emergency simulation<br>" +
+                "status — current status<br>" +
+                "powers — threat assessment<br>" +
+                "lizard — describe object<br>" +
+                "god — █████████████<br>" +
                 "clear — clear terminal";
 
             break;
@@ -1899,42 +2837,54 @@ function executeCommand(command) {
         case "status":
 
             response =
-                "CONTAINMENT: STABLE<br>" +
-                "CAMERAS: ONLINE<br>" +
-                "ANOMALY: PRESENT<br>" +
-                "PERSONNEL: 17<br>" +
-                "THREAT LEVEL: MODERATE";
+                "OBJECT: SCP-1501-J<br>" +
+                "STATUS: CONTAINED<br>" +
+                "MOOD: HUNGRY<br>" +
+                "THREAT: YES<br>" +
+                "IMMEDIATE DANGER: NO<br>" +
+                "REASON: IT IS BUSY EATING";
 
             break;
 
 
-        case "camera":
-
-            document
-                .getElementById("camera")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
+        case "powers":
 
             response =
-                "REDIRECTING TO CAMERA 03...";
+                "POWER LEVEL: UNKNOWN<br>" +
+                "MULTIVERSAL CAPABILITY: POSSIBLE<br>" +
+                "REALITY CONTROL: POSSIBLE<br>" +
+                "OMNIPOTENCE: UNCONFIRMED<br>" +
+                "ACTUAL BEHAVIOR: SLEEPING";
 
             break;
 
 
-        case "breach":
-
-            cameraBreach();
+        case "lizard":
 
             response =
-                "!!! CONTAINMENT BREACH SIMULATION !!!";
+                "SPECIES: LIZARD<br>" +
+                "SIZE: SMALL<br>" +
+                "INTELLIGENCE: UNKNOWN<br>" +
+                "COSMIC SIGNIFICANCE: ABSURD<br>" +
+                "LIKES: HEAT<br>" +
+                "DISLIKES: PEOPLE TOUCHING IT";
+
+            break;
+
+
+        case "god":
+
+            godMode();
+
+            response =
+                "WARNING: DO NOT CONTINUE.";
 
             break;
 
 
         case "clear":
 
-            terminalOutput.innerHTML = "";
+            output.innerHTML = "";
 
             return;
 
@@ -1951,50 +2901,94 @@ function executeCommand(command) {
     const line =
         document.createElement("div");
 
-    line.style.marginTop = "10px";
+
+    line.style.marginTop =
+        "12px";
+
 
     line.innerHTML =
-        "<span style='color:#587160'>" +
-        "root@site:~$ " +
+        "<span style='color:#58715f'>" +
+        "root@foundation:~$ " +
         "</span>" +
+
         command +
-        "<br><span style='color:#9ca69f'>" +
+
+        "<br>" +
+
+        "<span style='color:#9ca69f'>" +
         response +
         "</span>";
 
 
-    terminalOutput.appendChild(line);
+    output.appendChild(line);
 
-    terminalOutput.scrollTop =
-        terminalOutput.scrollHeight;
+
+    output.scrollTop =
+        output.scrollHeight;
+
 }
 
 
 /* =========================================================
-   RANDOM DATABASE NOISE
+   RANDOM SYSTEM GLITCH
 ========================================================= */
 
 setInterval(() => {
 
-    const chance =
-        Math.random();
+    if (
+        Math.random() < .025
+    ) {
 
-    if (chance > .96) {
-
-        const title =
+        const status =
             document.querySelector(
-                ".system-status"
+                ".status"
             );
 
-        title.style.opacity = ".2";
+
+        status.style.opacity =
+            ".2";
+
 
         setTimeout(() => {
-            title.style.opacity = "1";
-        }, 120);
+
+            status.style.opacity =
+                "1";
+
+        },120);
 
     }
 
-}, 1000);
+},1000);
+
+
+/* =========================================================
+   IDLE LIZARD EVENT
+========================================================= */
+
+setInterval(() => {
+
+    if (
+        Math.random() < .12
+    ) {
+
+        const original =
+            document.title;
+
+
+        document.title =
+            "SCP-1501-J IS WATCHING";
+
+
+        setTimeout(() => {
+
+            document.title =
+                original;
+
+        },1500);
+
+    }
+
+},12000);
 
 </script>
 
